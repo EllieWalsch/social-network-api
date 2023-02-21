@@ -1,1 +1,4 @@
-export const add2Nums = (num1, num2) => num1 + num2;
+import initDBClient from "./client.js";
+
+// inits the database connection
+initDBClient();
