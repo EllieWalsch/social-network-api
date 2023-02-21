@@ -1,4 +1,5 @@
 import { Schema } from "mongoose";
+import reactionSchema from "./reaction-schema.js";
 
 const thoughtSchema = new Schema(
   {
@@ -17,7 +18,7 @@ const thoughtSchema = new Schema(
       type: String,
       required: [true, "Username is required"],
     },
-    // TODO: add reactions
+    reactions: [reactionSchema],
   },
   {
     strict: "throw",
@@ -25,5 +26,7 @@ const thoughtSchema = new Schema(
     id: false,
   }
 );
+
+// TODO: Create a virtual called reactionCount that retrieves the length of the thought's reactions array field on query
 
 export default thoughtSchema;
