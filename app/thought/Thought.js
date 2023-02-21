@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 import reactionSchema from "./reaction-schema.js";
 
 const thoughtSchema = new Schema(
@@ -29,4 +29,4 @@ const thoughtSchema = new Schema(
 
 // TODO: Create a virtual called reactionCount that retrieves the length of the thought's reactions array field on query
 
-export default thoughtSchema;
+export default model("Thought", thoughtSchema);

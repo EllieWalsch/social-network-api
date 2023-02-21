@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 
 const userSchema = new Schema({
   username: {
@@ -16,4 +16,4 @@ const userSchema = new Schema({
   // TODO: add thoughts and friends
 });
 
-export default userSchema;
+export default model("User", userSchema);
