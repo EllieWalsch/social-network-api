@@ -1,4 +1,3 @@
-import initDBClient from "../client.js";
 import User from "./User.js";
 
 const userController = {
@@ -29,16 +28,5 @@ const userController = {
     );
   },
 };
-
-await initDBClient();
-
-userController
-  .addFriend("63f6402089ea70dd5c855f2a", "63f6432df14365ada36b9c75")
-  .then((user) => {
-    console.info(user);
-  })
-  .catch((err) => {
-    console.error(err.message);
-  });
 
 export default userController;

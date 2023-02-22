@@ -58,4 +58,15 @@ router.delete("/:id", (req, res) => {
     });
 });
 
+router.put("/:userId/friends/:friendId", (req, res) => {
+  userController
+    .addFriend(req.params.userId, req.params.friendId)
+    .then(() => {
+      res.json({ message: "friend added!" });
+    })
+    .catch((err) => {
+      res.json({ error: err.mesasge });
+    });
+});
+
 export default router;
