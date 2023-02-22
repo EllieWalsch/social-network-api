@@ -21,6 +21,8 @@ const thoughtSchema = new Schema(
     reactions: [reactionSchema],
   },
   {
+    new: true,
+    runValidators: true,
     strict: "throw",
     toJSON: { virtuals: true, getters: true },
     id: false,
