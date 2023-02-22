@@ -25,4 +25,15 @@ router.get("/:id", (req, res) => {
     });
 });
 
+router.post("/:id", (req, res) => {
+  userController
+    .create(req.body)
+    .then((user) => {
+      res.json(user);
+    })
+    .catch((err) => {
+      res.json({ error: err.message });
+    });
+});
+
 export default router;
