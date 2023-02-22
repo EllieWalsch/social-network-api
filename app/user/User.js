@@ -31,6 +31,7 @@ const userSchema = new Schema(
     ],
   },
   {
+    versionKey: false,
     new: true,
     runValidators: true,
     strict: "throw",
