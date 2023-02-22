@@ -47,4 +47,15 @@ router.put("/:id", (req, res) => {
     });
 });
 
+router.delete("/:id", (req, res) => {
+  userController
+    .delete(req.params.id)
+    .then(() => {
+      res.json({ message: "user deleted" });
+    })
+    .catch((err) => {
+      res.json({ error: err.message });
+    });
+});
+
 export default router;
