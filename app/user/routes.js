@@ -69,4 +69,15 @@ router.put("/:userId/friends/:friendId", (req, res) => {
     });
 });
 
+router.put("/:userId/friends/remove/:friendId", (req, res) => {
+  userController
+    .deleteFriend(req.params.userId, req.params.friendId)
+    .then(() => {
+      res.json({ message: "friend deleted" });
+    })
+    .catch((err) => {
+      res.json({ error: err.message });
+    });
+});
+
 export default router;
