@@ -1,4 +1,4 @@
-import mongoose, { model, Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 
 const userSchema = new Schema(
   {
@@ -6,28 +6,12 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Username is required"],
       trim: true,
-      validate: {
-        async validator(username) {
-          const duplicate = await mongoose.models.Student.findOne({ username });
-
-          // inverse the boolean value if duplicate is found
-          return !duplicate;
-        },
-        message: "Duplicate username",
-      },
+      unique: true,
     },
     email: {
       type: String,
       required: [true, "Email is required"],
-      validate: {
-        async validator(email) {
-          const duplicate = await mongoose.models.Student.findOne({ email });
-
-          // Inverse the boolean value if duplicate is found
-          return !duplicate;
-        },
-        message: "Duplicate email",
-      },
+      unique: true,
       match: [
         /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
         "Invalid email",
