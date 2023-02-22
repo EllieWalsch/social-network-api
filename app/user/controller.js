@@ -11,7 +11,11 @@ const userController = {
     return User.findById(userID);
   },
   update(userID, newInfo) {
-    return User.findByIdAndUpdate(userID, { $set: newInfo }, { new: true });
+    return User.findByIdAndUpdate(
+      { _id: userID },
+      { $set: newInfo },
+      { new: true }
+    );
   },
   delete(userID) {
     return User.findByIdAndDelete(userID);

@@ -36,4 +36,15 @@ router.post("/", (req, res) => {
     });
 });
 
+router.put("/:id", (req, res) => {
+  userController
+    .update(req.params.id, req.body)
+    .then((user) => {
+      res.json(user);
+    })
+    .catch((err) => {
+      res.json({ error: err.message });
+    });
+});
+
 export default router;
