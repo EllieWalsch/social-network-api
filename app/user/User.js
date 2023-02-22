@@ -36,6 +36,7 @@ const userSchema = new Schema(
     runValidators: true,
     strict: "throw",
     toJSON: { virtuals: true, getters: true },
+    id: false,
   }
 );
 
