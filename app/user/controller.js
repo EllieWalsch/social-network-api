@@ -1,22 +1,21 @@
-import initDBClient from "../client.js";
 import User from "./User.js";
 
-const controller = {
+const userController = {
   create(newUser) {
     return User.create(newUser);
   },
+  findAll() {
+    return User.find();
+  },
+  findOne(userID) {
+    return User.findById(userID);
+  },
+  update(userID, newInfo) {
+    return User.findByIdAndUpdate(userID, { $set: newInfo }, { new: true });
+  },
+  delete(userID) {
+    return User.findByIdAndDelete(userID);
+  },
 };
 
-await initDBClient();
-
-controller
-  .create({
-    username: "elliewalsch",
-    email: "ellie@email.com",
-  })
-  .then((user) => {
-    console.info(user);
-  })
-  .catch((error) => {
-    console.error(error.message);
-  });
+export default userController;
