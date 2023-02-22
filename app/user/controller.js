@@ -27,6 +27,13 @@ const userController = {
       { new: true }
     );
   },
+  deleteFriend(userID, friendID) {
+    return User.findByIdAndUpdate(
+      { _id: userID },
+      { $pull: { friends: friendID } },
+      { new: true }
+    );
+  },
 };
 
 export default userController;
