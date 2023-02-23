@@ -23,6 +23,7 @@ const reactionSchema = new Schema(
   },
   {
     new: true,
+    versionKey: false,
     runValidators: true,
     strict: "throw",
     toJSON: { getters: true, virtuals: true },
