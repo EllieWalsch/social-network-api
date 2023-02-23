@@ -58,4 +58,15 @@ router.delete("/:id", (req, res) => {
     });
 });
 
+router.put("/:thoughtId/reactions", (req, res) => {
+  thoughtController
+    .addReaction(req.params.thoughtId, req.body)
+    .then((thought) => {
+      res.json(thought);
+    })
+    .catch((err) => {
+      res.json({ error: err.message });
+    });
+});
+
 export default router;
