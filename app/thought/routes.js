@@ -69,4 +69,15 @@ router.put("/:thoughtId/reactions", (req, res) => {
     });
 });
 
+router.put("/:thoughtId/reactions/:reactionId", (req, res) => {
+  thoughtController
+    .deleteReaction(req.params.thoughtId, req.params.reactionId)
+    .then((thought) => {
+      res.json({ message: "reaction deleted" });
+    })
+    .catch((err) => {
+      res.json({ error: err.message });
+    });
+});
+
 export default router;
