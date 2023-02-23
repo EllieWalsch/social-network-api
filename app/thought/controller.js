@@ -1,4 +1,3 @@
-import initDBClient from "../client.js";
 import User from "../user/User.js";
 import Thought from "./Thought.js";
 
@@ -43,16 +42,5 @@ const thoughtController = {
     );
   },
 };
-
-await initDBClient();
-
-thoughtController
-  .deleteReaction("63f79b075e40d6de98b4e147", "63f7bd8a75fe40f73d8ac1a7")
-  .then((thought) => {
-    console.info(thought);
-  })
-  .catch((err) => {
-    console.error(err.message);
-  });
 
 export default thoughtController;
