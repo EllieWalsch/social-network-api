@@ -1,6 +1,6 @@
+import initDBClient from "../client.js";
 import User from "../user/User.js";
 import Thought from "./Thought.js";
-import initDBClient from "../client.js";
 
 const thoughtController = {
   async create(userID, thoughtBody) {
@@ -35,15 +35,19 @@ const thoughtController = {
       { new: true }
     );
   },
+  deleteReaction(thoughtID, reactionID) {
+    return Thought.findByIdAndUpdate(
+      { _id: thoughtID },
+      { $pull: { reactions: { _id: reactionID } } },
+      { new: true }
+    );
+  },
 };
 
 await initDBClient();
 
 thoughtController
-  .addReaction("63f79b075e40d6de98b4e147", {
-    reactionBody: "test",
-    username: "grantapplegate",
-  })
+  .deleteReaction("63f79b075e40d6de98b4e147", "63f7bd8a75fe40f73d8ac1a7")
   .then((thought) => {
     console.info(thought);
   })
