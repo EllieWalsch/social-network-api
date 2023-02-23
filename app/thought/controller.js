@@ -1,4 +1,3 @@
-import initDBClient from "../client.js";
 import User from "../user/User.js";
 import Thought from "./Thought.js";
 
@@ -12,20 +11,22 @@ const thoughtController = {
       { new: true }
     );
   },
+  findAll() {
+    return Thought.find();
+  },
+  findOne(thoughtID) {
+    return Thought.findById(thoughtID);
+  },
+  update(thoughtID, newInfo) {
+    return Thought.findByIdAndUpdate(
+      { _id: thoughtID },
+      { $set: newInfo },
+      { new: true }
+    );
+  },
+  delete(thoughtID) {
+    return Thought.findByIdAndDelete(thoughtID);
+  },
 };
-
-await initDBClient();
-
-thoughtController
-  .create("63f6402089ea70dd5c855f2a", {
-    thoughtText: "Hello",
-    username: "grantapplegate",
-  })
-  .then((user) => {
-    console.info(user);
-  })
-  .catch((error) => {
-    console.error(error.message);
-  });
 
 export default thoughtController;
