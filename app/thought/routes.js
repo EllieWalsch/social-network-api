@@ -36,4 +36,26 @@ router.post("/:userID", (req, res) => {
     });
 });
 
+router.put("/:id", (req, res) => {
+  thoughtController
+    .update(req.params.id, req.body)
+    .then((thought) => {
+      res.json(thought);
+    })
+    .catch((err) => {
+      res.json({ error: err.message });
+    });
+});
+
+router.delete("/:id", (req, res) => {
+  thoughtController
+    .delete(req.params.id)
+    .then(() => {
+      res.json({ message: "thought deleted" });
+    })
+    .catch((err) => {
+      res.json({ error: err.message });
+    });
+});
+
 export default router;
