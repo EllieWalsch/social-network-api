@@ -17,8 +17,19 @@ router.get("/", (_, res) => {
 router.get("/:id", (req, res) => {
   thoughtController
     .findOne(req.params.id)
-    .then((thoughts) => {
-      res.json(thoughts);
+    .then((thought) => {
+      res.json(thought);
+    })
+    .catch((err) => {
+      res.json({ error: err.message });
+    });
+});
+
+router.post("/:userID", (req, res) => {
+  thoughtController
+    .create(req.params.userID, req.body)
+    .then((user) => {
+      res.json(user);
     })
     .catch((err) => {
       res.json({ error: err.message });
