@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { Schema, Types } from "mongoose";
 
 const reactionSchema = new Schema(
@@ -18,7 +19,9 @@ const reactionSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      // TODO: add getter to format the timestamp on query
+      get(createdAtVal) {
+        return dayjs(createdAtVal).format("MMM DD, YYYY [at] hh:mm a");
+      },
     },
   },
   {
