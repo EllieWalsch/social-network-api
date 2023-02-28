@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { model, Schema } from "mongoose";
 import reactionSchema from "./reaction-schema.js";
 
@@ -12,7 +13,9 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
-      // TODO: add getter to format the timestamp on query
+      get(createdAtVal) {
+        return dayjs(createdAtVal).format("MMM DD, YYYY [at] hh:mm a");
+      },
     },
     username: {
       type: String,
